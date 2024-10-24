@@ -4,15 +4,16 @@ This repo provides a library of functions dedicated to bit fields.
 
 ## Content
 
-It allows to manage a bit field stored on a byte thanks to :
-* Set_Bit_Byte
-* Reset_Bit_Byte
-* Test_Bit_Byte
+It allows to manage a bit field stored on a carrier (such as register) thanks to
+macros :
+* SET_BIT
+* CLEAR_BIT
+* TEST_BIT
 
 It allows to manage a bit field stored on a block (as an array of bytes) thanks
 to :
 * Set_Bit_Block
-* Reset_Bit_Block
+* Clear_Bit_Block
 * Test_Bit_Block
 * Permute_Bits
 

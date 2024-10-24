@@ -11,15 +11,31 @@ int main()
     assert( byte_1 == 0 );
     for ( uint8_t bit_idx = 0; bit_idx < 8; bit_idx++ )
     {
-        assert( Test_Bit_Byte( &byte_1, bit_idx) == false );
+        assert( TEST_BIT(byte_1, bit_idx) == false );
     }
 
     for (uint8_t bit_idx = 0; bit_idx < 8; bit_idx++)
     {
-        Set_Bit_Byte( &byte_1, bit_idx );
-        assert( Test_Bit_Byte( &byte_1, bit_idx ) == true );
-        Reset_Bit_Byte( &byte_1, bit_idx );
-        assert( Test_Bit_Byte( &byte_1, bit_idx ) == false );
+        SET_BIT( byte_1, bit_idx );
+        assert( TEST_BIT( byte_1, bit_idx ) == true );
+        CLEAR_BIT( byte_1, bit_idx );
+        assert( TEST_BIT( byte_1, bit_idx ) == false );
+    }
+    
+    /* Tests on bit field on a word */
+    uint16_t word_1 = 0;
+    assert( word_1 == 0 );
+    for ( uint8_t bit_idx = 0; bit_idx < 16; bit_idx++ )
+    {
+        assert( TEST_BIT(word_1, bit_idx) == false );
+    }
+
+    for (uint8_t bit_idx = 0; bit_idx < 16; bit_idx++)
+    {
+        SET_BIT( word_1, bit_idx );
+        assert( TEST_BIT( word_1, bit_idx ) == true );
+        CLEAR_BIT( word_1, bit_idx );
+        assert( TEST_BIT( word_1, bit_idx ) == false );
     }
 
     /* Tests on bit field on a block */
@@ -33,7 +49,7 @@ int main()
     {
         Set_Bit_Block( block_40, bit_idx );
         assert( Test_Bit_Block( block_40, bit_idx ) == true );
-        Reset_Bit_Block( block_40, bit_idx );
+        Clear_Bit_Block( block_40, bit_idx );
         assert( Test_Bit_Block( block_40, bit_idx ) == false );
     }
 
