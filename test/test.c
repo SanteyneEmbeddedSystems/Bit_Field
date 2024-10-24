@@ -11,15 +11,15 @@ int main()
     assert( byte_1 == 0 );
     for ( uint8_t bit_idx = 0; bit_idx < 8; bit_idx++ )
     {
-        assert( Test_Bit_Byte( &byte_1, bit_idx) == false );
+        assert( Test_Bit_Byte(byte_1, bit_idx) == false );
     }
 
     for (uint8_t bit_idx = 0; bit_idx < 8; bit_idx++)
     {
-        Set_Bit_Byte( &byte_1, bit_idx );
-        assert( Test_Bit_Byte( &byte_1, bit_idx ) == true );
-        Reset_Bit_Byte( &byte_1, bit_idx );
-        assert( Test_Bit_Byte( &byte_1, bit_idx ) == false );
+        Set_Bit_Byte( byte_1, bit_idx );
+        assert( Test_Bit_Byte( byte_1, bit_idx ) == true );
+        Reset_Bit_Byte( byte_1, bit_idx );
+        assert( Test_Bit_Byte( byte_1, bit_idx ) == false );
     }
 
     /* Tests on bit field on a block */

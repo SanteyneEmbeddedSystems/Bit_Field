@@ -1,44 +1,20 @@
 #include "Bit_Field.h"
 
 
-static const uint8_t SET_MASK_BYTE[8] =
-    { 0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01 };
-
-static const uint8_t RESET_MASK_BYTE[8] =
-    { 0x7F, 0xBF, 0xDF, 0xEF, 0xF7, 0xFB, 0xFD, 0xFE };
-
-
-/*============================================================================*/
-void Set_Bit_Byte( uint8_t* field, uint8_t bit_index )
-{
-    (*field) |= SET_MASK_BYTE[bit_index];
-}
-/*----------------------------------------------------------------------------*/
-void Reset_Bit_Byte( uint8_t* field, uint8_t bit_index )
-{
-    (*field) &= RESET_MASK_BYTE[bit_index];
-}
-/*----------------------------------------------------------------------------*/
-bool Test_Bit_Byte( const uint8_t* field, uint8_t bit_index )
-{
-    return  ((*field) & SET_MASK_BYTE[bit_index]) ? true : false;
-}
-
-
 /*============================================================================*/
 void Set_Bit_Block( uint8_t* block, uint8_t bit_index )
 {
-    block[bit_index/8] |= SET_MASK_BYTE[bit_index%8];
+    block[bit_index/8] |= SET_MASK[bit_index%8];
 }
 /*----------------------------------------------------------------------------*/
 void Reset_Bit_Block( uint8_t* block, uint8_t bit_index )
 {
-    block[bit_index/8] &= RESET_MASK_BYTE[bit_index%8];
+    block[bit_index/8] &= CLEAR_MASK[bit_index%8];
 }
 /*----------------------------------------------------------------------------*/
 bool Test_Bit_Block( const uint8_t* block, uint8_t bit_index )
 {
-    return ((block[bit_index/8]&SET_MASK_BYTE[bit_index%8])!=0)?true:false;
+    return ((block[bit_index/8] & SET_MASK[bit_index%8])!=0) ? true : false;
 }
 /*----------------------------------------------------------------------------*/
 void Permute_Bits(
